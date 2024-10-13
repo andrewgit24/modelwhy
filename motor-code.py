@@ -50,35 +50,38 @@ async def turn_for_degrees(degrees, speed, debug = False):
     KP=0.3
     KI=0.005
     motion_sensor.reset_yaw(0)
+    steer = 100
     adj_factor=180/112.5
     if speed < 0 or degrees < 0:
-        degrees = abs(degrees) * -1
+        degrees = abs(degrees)
         speed = abs(speed)
+        steer = -100
 
     # turn motor pair
     adj_angle = int(degrees*adj_factor)
-    await motor_pair.move_for_degrees(motor_pair.PAIR_1, adj_angle, 100, velocity=speed)
+    await motor_pair.move_for_degrees(motor_pair.PAIR_1, adj_angle, steer, velocity=speed)
     yaw = motion_sensor.tilt_angles()[0]* -0.1
     # debugging
     if debug:
         print("current angle = " + str(yaw))
 
     # current errors
-    error = degrees - yaw
+    error = degrees - abs(yaw)
     counter = 0
     while abs(error) > 2 and counter < 10:
         correction = int(error)
-        if correction > 5:
+        if correction > 5 and counter > 3:
             correction = 5
-        elif correction < -5:
+        elif correction < -5 and counter > 3:
             correction = -5
-        await motor_pair.move_for_degrees(motor_pair.PAIR_1, correction, 100, velocity=speed)
+        await motor_pair.move_for_degrees(motor_pair.PAIR_1, correction, steer, velocity=speed)
         counter += 1
         yaw = motion_sensor.tilt_angles()[0]* -0.1
         # debugging
         if debug:
+            print('correction = ' + str(correction))
             print("current angle = " + str(yaw))
-        error = degrees - yaw
+        error = degrees - abs(yaw)
 
     # get actual degrees
     if debug:
