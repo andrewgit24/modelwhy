@@ -6,7 +6,7 @@ async def move_motor_pair(steering, speed):
     motor_pair.move(motor_pair.PAIR_1, steering, velocity=speed)
 
 # motor move straight forward and backward
-async def move_straight(distance, speed, KP=0.3, debug = False):
+async def move_straight(distance, speed, KP=0.8, debug = False):
     #debugging
     if debug:
         print('===== move_straight =====')
@@ -44,7 +44,7 @@ async def move_straight(distance, speed, KP=0.3, debug = False):
         print('Robot off course by ' + str(yaw) + " degrees")
 
 # turn motor at an angle
-async def turn_for_degrees(degrees, speed, KP=0.3, debug = False):
+async def turn_for_degrees(degrees, speed, KP=1.0, debug = False):
     #debugging
     if debug:
         print('===== turn_for_degrees =====')
