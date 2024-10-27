@@ -34,6 +34,8 @@ async def move_straight(distance, speed, KP=0.8, debug = False):
         current_error= angle - yaw
         past_error = past_error +current_error
         correction = int(current_error *KP + past_error*KI)
+        if speed < 0:
+            correction *= -1
         runloop.run(move_motor_pair(correction, speed))
         runloop.sleep_ms(timer)
     motor_pair.stop(motor_pair.PAIR_1)
