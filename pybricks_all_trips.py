@@ -27,14 +27,21 @@ def test_robot():
 
 def trip_1():
     drive_base.use_gyro(True)
-    #drive_base.straight(100)
-    spin_motor.run_angle(300, -650)
-    spin_motor.run_angle(300, 200)
+    drive_base.straight(560)
+#    lift_motor.run_angle(200, -50)
     drive_base.use_gyro(False)
 
 def trip_2():
     drive_base.use_gyro(True)
-    drive_base.straight(100)
+    drive_base.straight(238)
+    lift_motor.run_angle(200, -130)
+    drive_base.straight(260)
+    lift_motor.run_angle(200, 60)
+    drive_base.straight(-200)
+    drive_base.turn(45)
+    lift_motor.run_angle(200, -60)
+    drive_base.straight(575)
+    drive_base.turn(-92)
     drive_base.use_gyro(False)
 
 def trip_3():
