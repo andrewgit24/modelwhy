@@ -10,77 +10,124 @@ right_motor = Motor(Port.D, Direction.CLOCKWISE)
 drive_base = DriveBase(left_motor, right_motor, 62, 112)
 drive_base.settings(
     straight_speed=400,
-    straight_acceleration=800,
+    straight_acceleration=400,
     turn_rate=100,
     turn_acceleration=200
 )
 spin_motor = Motor(Port.F, Direction.CLOCKWISE)
 lift_motor = Motor(Port.B, Direction.CLOCKWISE)
 
+def move_straight(distance, speed):
+    drive_base.straight(distance)
+
+def turn_for_degrees(degrees, speed):
+    drive_base.turn(degrees)
+
+def move_lift_arm(degrees, speed):
+    lift_motor.run_angle(speed, degrees)
+
+def move_spin_motor(degrees, speed):
+    spin_motor.run_angle(speed, degrees)
+
 def test_robot():
     drive_base.use_gyro(True)
-    drive_base.straight(100)
-    drive_base.turn(90)
-    drive_base.straight(-100)
-    drive_base.turn(-90)
+    move_straight(100, 400)
+    turn_for_degrees(90, 200)
+    move_straight(-100, 400)
+    turn_for_degrees(-90, 200)
     drive_base.use_gyro(False)
 
 def trip_1():
     drive_base.use_gyro(True)
-    drive_base.straight(550)
-    drive_base.turn(20)
-    drive_base.straight(200)
-    drive_base.straight(-450)
-    drive_base.turn(32)
-    lift_motor.run_angle(200, 220)
-    drive_base.straight(210)
-    lift_motor.run_angle(50, -70)
-    drive_base.straight(15)
-    lift_motor.run_angle(100, 70)
-    drive_base.straight(-100)
-    drive_base.turn(-45)
-    drive_base.straight(-500)
+    # clear left field
+    move_straight(550, 400)
+    turn_for_degrees(20, 200)
+    move_straight(200, 400)
+    move_straight(-450, 400)
+    # treasure chest
+    turn_for_degrees(32, 200)
+    move_lift_arm(220, 200)
+    move_straight(210, 400)
+    move_lift_arm(-70, 50)
+    move_straight(15, 400)
+    move_lift_arm(70, 100)
+    move_straight(-100, 400)
+    # back to homebase
+    turn_for_degrees(-45, 200)
+    move_straight(-500, 400)
     drive_base.use_gyro(False)
 
 def trip_2():
     drive_base.use_gyro(True)
-    drive_base.straight(238)
-    lift_motor.run_angle(200, -130)
-    drive_base.straight(260)
-    lift_motor.run_angle(200, 60)
-    drive_base.straight(-200)
-    drive_base.turn(45)
-    lift_motor.run_angle(200, -60)
-    drive_base.straight(575)
-    drive_base.turn(-92)
+    # coral tree support
+    move_straight(108, 400)
+    move_lift_arm(-130, 200)
+    move_straight(260, 400)
+    move_lift_arm(60, 200)
+    move_straight(-200, 400)
+    # shark
+    turn_for_degrees(45, 200)
+    move_lift_arm(-60, 200)
+    move_straight(590, 400)
+    turn_for_degrees(-87, 200)
+    move_straight(295, 400)
+    # coral buds and diver
+    move_straight(-325, 400)
+    turn_for_degrees(40, 200)
+    move_straight(130, 400)
+    turn_for_degrees(-85, 200)
+    move_lift_arm(55, 200)
+    move_straight(170, 400)
+    move_lift_arm(-55, 200)
+    move_straight(-185, 400)
+    # coral reef support
+    turn_for_degrees(95, 200)
+    move_straight(-50, 400)
+    move_lift_arm(40, 200)
+    move_straight(90, 400)
+    move_lift_arm(25, 200)
+    move_straight(-100, 400)
+    # coral reef flower
+    move_straight(80, 400)
+    move_lift_arm(40, 200)
+    move_lift_arm(-100, 200)
+    move_straight(-700, 400)
+
     drive_base.use_gyro(False)
 
 def trip_3():
     drive_base.use_gyro(True)
-    drive_base.straight(100)
+    move_straight(100, 400)
     drive_base.use_gyro(False)
 
 def trip_4():
     drive_base.use_gyro(True)
-    drive_base.straight(100)
+    move_straight(770, 400)
+    move_lift_arm(200, 200)
+    move_straight(-55, 400)
+    move_lift_arm(-40, 200)
+    move_straight(-700, 400)
     drive_base.use_gyro(False)
 
 def trip_5():
     drive_base.use_gyro(True)
-    drive_base.straight(795)
-    spin_motor.run_angle(300, -780)
-    spin_motor.run_angle(300, -200)
-    drive_base.straight(-100)
-    drive_base.turn(-30)
-    drive_base.straight(-350)
-    drive_base.straight(250)
-    drive_base.turn(35)
-    drive_base.straight(-800)
+    # sonar discovery
+    move_straight(795, 400)
+    move_spin_motor(-780, 300)
+    move_spin_motor(-200, 300)
+    move_straight(-100, 400)
+    # change shipping lanes
+    turn_for_degrees(-30, 200)
+    move_straight(-350, 400)
+    move_straight(250, 400)
+    # back to homebase
+    turn_for_degrees(35, 200)
+    move_straight(-800, 400)
     drive_base.use_gyro(False)
 
 def trip_6():
     drive_base.use_gyro(True)
-    drive_base.straight(100)
+    move_straight(100, 400)
     drive_base.use_gyro(False)
 
 def main():
