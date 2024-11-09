@@ -91,22 +91,38 @@ def trip_2():
     move_straight(80, 400)
     move_lift_arm(40, 200)
     move_lift_arm(-100, 200)
+    # back to homebase
     move_straight(-700, 400)
-
     drive_base.use_gyro(False)
 
 def trip_3():
     drive_base.use_gyro(True)
-    move_straight(100, 400)
+    # trident and deliver shark
+    move_straight(180, 400)
+    turn_for_degrees(-10, 200)
+    move_straight(300, 400)
+    turn_for_degrees(-25, 200)
+    move_straight(270, 400)
+    move_straight(-50, 400)
+    turn_for_degrees(20, 200)
+    # back to homebase
+    move_straight(-700, 400)
     drive_base.use_gyro(False)
 
 def trip_4():
     drive_base.use_gyro(True)
-    move_straight(770, 400)
+    # crab
+    move_straight(780, 400)
     move_lift_arm(200, 200)
     move_straight(-55, 400)
     move_lift_arm(-40, 200)
-    move_straight(-700, 400)
+    # back to homebase on other side
+    move_straight(-100, 400)
+    move_lift_arm(-160, 200)
+    turn_for_degrees(-40, 200)
+    move_straight(250, 400)
+    turn_for_degrees(50, 200)
+    move_straight(900, 400)
     drive_base.use_gyro(False)
 
 def trip_5():
