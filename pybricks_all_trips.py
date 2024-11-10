@@ -143,7 +143,23 @@ def trip_5():
 
 def trip_6():
     drive_base.use_gyro(True)
-    move_straight(100, 400)
+    # get the octopus
+    move_straight(360, 400)
+    # go to push angler fish
+    turn_for_degrees(65, 200)
+    move_straight(450, 400)
+    turn_for_degrees(-120, 200)
+    move_straight(650, 400)
+    # back and release octopus
+    move_straight(-220, 400)
+    move_lift_arm(-150, 200)
+    turn_for_degrees(-20, 200)
+    move_straight(-120, 400)
+    # lift submersible
+    turn_for_degrees(65, 200)
+    move_straight(310, 400)
+    move_lift_arm(-100, 200)
+    move_straight(-310, 400)
     drive_base.use_gyro(False)
 
 def main():
