@@ -47,7 +47,7 @@ def trip_1():
     # treasure chest
     turn_for_degrees(32, 200)
     move_lift_arm(220, 200)
-    move_straight(210, 400)
+    move_straight(225, 400)
     move_lift_arm(-70, 50)
     move_straight(15, 400)
     move_lift_arm(70, 100)
@@ -112,16 +112,17 @@ def trip_3():
 def trip_4():
     drive_base.use_gyro(True)
     # crab
-    move_straight(780, 400)
+    move_straight(785, 400)
+    turn_for_degrees(8, 200)
     move_lift_arm(200, 200)
-    move_straight(-55, 400)
+    move_straight(-68, 400)
     move_lift_arm(-40, 200)
     # back to homebase on other side
     move_straight(-100, 400)
     move_lift_arm(-160, 200)
     turn_for_degrees(-40, 200)
     move_straight(250, 400)
-    turn_for_degrees(50, 200)
+    turn_for_degrees(40, 200)
     move_straight(900, 400)
     drive_base.use_gyro(False)
 
