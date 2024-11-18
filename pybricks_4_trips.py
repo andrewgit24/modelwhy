@@ -35,6 +35,11 @@ def move_lift_arm(degrees, speed, stop_choice=Stop.COAST):
 def move_spin_motor(degrees, speed):
     spin_motor.run_angle(speed, degrees)
 
+def test_straight():
+    drive_base.use_gyro(True)
+    move_straight(800, 400)
+    drive_base.use_gyro(False)
+
 def test_robot():
     drive_base.use_gyro(True)
     move_straight(100, 400)
@@ -69,7 +74,7 @@ def trip_2():
     move_straight(200, 400)
     move_lift_arm_up()
     turn_for_degrees(-70, 200)
-    move_straight(550, 400)
+    move_straight(540, 400)
     move_lift_arm(60, 200)
     turn_for_degrees(15, 400)
     move_lift_arm(55, 200)
@@ -97,53 +102,28 @@ def trip_2():
     move_straight(-700, 400)
     drive_base.use_gyro(False)
 
-def trip_2x():
-    drive_base.use_gyro(True)
-    # coral reef flower
-    move_straight(150, 400)
-    turn_for_degrees(-62, 200)
-    move_straight(700, 400)
-    move_lift_arm(120, 200)
-    move_lift_arm(-120, 200)
-
-    # shark
-    turn_for_degrees(45, 200)
-    move_lift_arm(-60, 200)
-    move_straight(590, 400)
-    turn_for_degrees(-87, 200)
-    move_straight(295, 400)
-    # coral buds and diver
-    move_straight(-325, 400)
-    turn_for_degrees(40, 200)
-    move_straight(130, 400)
-    turn_for_degrees(-85, 200)
-    move_lift_arm(55, 200)
-    move_straight(170, 400)
-    move_lift_arm(-55, 200)
-    move_straight(-185, 400)
-    # coral reef support
-    turn_for_degrees(95, 200)
-    move_straight(-50, 400)
-    move_lift_arm(40, 200)
-    move_straight(90, 400)
-    move_lift_arm(25, 200)
-    move_straight(-100, 400)
-    # back to homebase
-    move_straight(-700, 400)
-    drive_base.use_gyro(False)
-
 def trip_3():
     drive_base.use_gyro(True)
     # trident and deliver shark
-    move_straight(180, 400)
-    turn_for_degrees(-10, 200)
-    move_straight(300, 400)
-    turn_for_degrees(-25, 200)
+    move_lift_arm_up()
+    move_straight(480, 400)
+    turn_for_degrees(-35, 200)
     move_straight(270, 400)
     move_straight(-50, 400)
     turn_for_degrees(20, 200)
-    # back to homebase
-    move_straight(-700, 400)
+    # crab
+    move_straight(-220, 400)
+    turn_for_degrees(45, 200)
+    move_straight(350, 400)
+    turn_for_degrees(-28, 200)
+    move_straight(65, 400)
+    move_lift_arm(186, 200)
+    move_straight(-120, 400)
+    # go to other homebase
+    turn_for_degrees(-25, 200)
+    move_straight(400, 400)
+    turn_for_degrees(35, 200)
+    move_straight(700, 400)
     drive_base.use_gyro(False)
 
 def trip_4():
@@ -204,7 +184,7 @@ def main():
     selected = hub_menu("T", "1", "2", "3", "4")
 
     if selected == "T":
-        test_robot()
+        test_straight()
     elif selected == "1":
         trip_1()
     elif selected == "2":
@@ -215,3 +195,4 @@ def main():
         trip_4()
 
 main()
+
