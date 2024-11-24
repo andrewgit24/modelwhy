@@ -167,6 +167,6 @@ def main():
     elif selected == "3":
         trip_3()
     elif selected == "4":
-        trip_x()
+        trip_4()
 
 main()
