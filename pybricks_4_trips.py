@@ -134,9 +134,9 @@ def trip_4():
     move_straight(400, 400)
     # go to push angler fish
     turn_for_degrees(65, 200)
-    move_straight(450, 400)
+    move_straight(470, 400)
     turn_for_degrees(-120, 200)
-    move_straight(650, 400)
+    move_straight(670, 400)
     # back and release octopus
     move_straight(-220, 400)
     move_lift_arm(-150, 200)
@@ -144,17 +144,22 @@ def trip_4():
     move_straight(-120, 400)
     # lift submersible
     turn_for_degrees(65, 200)
-    move_straight(310, 400)
+    move_straight(305, 400)
     move_lift_arm(-100, 200)
-    move_straight(-310, 400)
-
+    # sonar
+    move_straight(-205, 400)
+    turn_for_degrees(-80, 200)
+    move_straight(-30, 400)
+    move_spin_motor(360, 200)
+    turn_for_degrees(-85, 200)
+    move_straight(800, 400)
     drive_base.use_gyro(False)
 
 def main():
     selected = hub_menu("T", "1", "2", "3", "4")
 
     if selected == "T":
-        test_straight()
+        test_robot()
     elif selected == "1":
         trip_1()
     elif selected == "2":
@@ -162,6 +167,6 @@ def main():
     elif selected == "3":
         trip_3()
     elif selected == "4":
-        trip_4()
+        trip_x()
 
 main()
