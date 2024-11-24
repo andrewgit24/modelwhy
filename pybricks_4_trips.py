@@ -143,16 +143,16 @@ def trip_4():
     turn_for_degrees(-20, 200)
     move_straight(-120, 400)
     # lift submersible
-    turn_for_degrees(65, 200)
+    turn_for_degrees(62, 200)
     move_straight(305, 400)
     move_lift_arm(-100, 200)
     # sonar
     move_straight(-205, 400)
     turn_for_degrees(-80, 200)
     move_straight(-30, 400)
-    move_spin_motor(360, 200)
+    move_spin_motor(600, 200)
     turn_for_degrees(-85, 200)
-    move_straight(800, 400)
+    move_straight(850, 400)
     drive_base.use_gyro(False)
 
 def main():
