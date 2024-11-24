@@ -128,41 +128,10 @@ def trip_3():
 
 def trip_4():
     drive_base.use_gyro(True)
-    # crab
-    move_straight(785, 400)
-    turn_for_degrees(8, 200)
-    move_lift_arm(200, 200)
-    move_straight(-68, 400)
-    move_lift_arm(-40, 200)
-    # back to homebase on other side
-    move_straight(-100, 400)
-    move_lift_arm(-160, 200)
-    turn_for_degrees(-40, 200)
-    move_straight(250, 400)
-    turn_for_degrees(40, 200)
-    move_straight(900, 400)
-    drive_base.use_gyro(False)
-
-def trip_5():
-    drive_base.use_gyro(True)
-    # sonar discovery
-    move_straight(795, 400)
-    move_spin_motor(-780, 300)
-    move_spin_motor(-200, 300)
-    move_straight(-100, 400)
-    # change shipping lanes
-    turn_for_degrees(-30, 200)
-    move_straight(-350, 400)
-    move_straight(250, 400)
-    # back to homebase
-    turn_for_degrees(35, 200)
-    move_straight(-800, 400)
-    drive_base.use_gyro(False)
-
-def trip_6():
-    drive_base.use_gyro(True)
-    # get the octopus
-    move_straight(360, 400)
+    # get octopus
+    move_straight(100, 400)
+    turn_for_degrees(42, 200)
+    move_straight(400, 400)
     # go to push angler fish
     turn_for_degrees(65, 200)
     move_straight(450, 400)
@@ -178,6 +147,7 @@ def trip_6():
     move_straight(310, 400)
     move_lift_arm(-100, 200)
     move_straight(-310, 400)
+
     drive_base.use_gyro(False)
 
 def main():
@@ -195,4 +165,3 @@ def main():
         trip_4()
 
 main()
-
