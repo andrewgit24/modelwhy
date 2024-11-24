@@ -149,7 +149,7 @@ def trip_4():
     # sonar
     move_straight(-205, 400)
     turn_for_degrees(-80, 200)
-    move_straight(-30, 400)
+    move_straight(-35, 400)
     move_spin_motor(600, 200)
     turn_for_degrees(-85, 200)
     move_straight(850, 400)
